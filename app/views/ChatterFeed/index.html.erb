@@ -24,14 +24,30 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 =end %>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Force.com Canvas Ruby Quick Start</title>
-  <%= csrf_meta_tags %>
-  <%= yield :head %>  
-</head>
-<body>
-<%= yield %>
-</body>
-</html>
+<% content_for(:head) do %>
+	<%= stylesheet_link_tag "chatterfeed" %>
+	<%= javascript_include_tag "application" %>
+	<script>
+        if (self === top) { alert("This canvas app must be included within an iframe"); }
+
+        Sfdc.canvas(function() {
+	        var sr = JSON.parse('<%= raw @canvasRequestJson %>');
+            var photoUri = sr.context.user.profileThumbnailUrl +  "?oauth_token=" + sr.client.oauthToken;
+            Sfdc.canvas.byId('profile-pic').src =  photoUri.indexOf("http")==0 ? "" :sr.client.instanceUrl + photoUri;
+            Sfdc.canvas.byId('profile-pic').alt = sr.context.user.firstName + " " + sr.context.user.lastName;
+            Sfdc.canvas.byId('parameters').innerHTML = JSON.stringify(sr.context.environment.parameters);
+        });
+	</script>
+<% end %>
+<div id="feed">
+    <div id="feed-content">
+        <img id="profile-pic" src="" alt="">
+        <span class="right-just"><h3>Welcome to Canvas in the Chatter Feed!</h3></span>
+        <h4>With Force.com Canvas in the feed, you can:</h4>
+        <ul>
+            <li>Act on parameters: <span id='parameters'></span></li>
+            <li>Display your 'Live' content.</li>
+            <li>Use the Canvas SDK to enhance your app</li>
+        </ul>
+    </div>
+</div>

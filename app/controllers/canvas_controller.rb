@@ -24,6 +24,20 @@
 class CanvasController < ApplicationController
   # GET /canvas
   def index
+    @authStatus = params[:_sfdc_canvas_auth]
+    # Check if canvas is reporting that the user must approve the app first.
+    # This is done by adding _sfdc_canvas_auth=user_approval_required to the
+    # query string.
+    if @authStatus.eql?("user_approval_required")
+      # Retrieve consumer key from environment. We need this
+      # for oauth flow.
+      @consumerKey = ENV["CANVAS_CONSUMER_KEY"]
+      raise "No consumer key found in environment [CANVAS_CONSUMER_KEY]." if @consumerKey.blank?()
+      render "user-approval"
+    else
+      render "index"
+    end
+    
   end
 
   # POST /canvas
@@ -42,7 +56,23 @@ class CanvasController < ApplicationController
 
     # Verify and decode the signed request.
     @canvasRequestJson = srHelper.verifyAndDecode()
-
+    
+    @canvasRequest = JSON.parse(@canvasRequestJson)
+    
+    # Parse user-agent header using useragent gem.  You can use this
+    # to determine if mobile device.
+    @ua = UserAgent.parse(request.user_agent)
+    
+    location = @canvasRequest["context"]["environment"]["displayLocation"]
+      
+    # Now, we check if a template exists to handle the current display location
+    # i.e. MobileNav/index, Publisher/index, etc.  If not, just render default.
+    templateExists = template_exists?("index",location)
+    if templateExists
+      render location+"/index"
+    else
+      render "default/index"
+    end
   end
 
 end

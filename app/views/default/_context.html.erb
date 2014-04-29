@@ -24,14 +24,37 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 =end %>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Force.com Canvas Ruby Quick Start</title>
-  <%= csrf_meta_tags %>
-  <%= yield :head %>  
-</head>
-<body>
-<%= yield %>
-</body>
-</html>
+<p>
+Force.com Canvas delivers user context information directly to your application, complete
+with a scoped authentication token to allow your application to communicate with Salesforce.com.
+</p>
+<p>
+Below is a sample of that information:
+</p>
+<table border="0" width="100%">
+    <tr>
+      <td width="30%"><b>First Name: </b></td>
+      <td><span id='firstname'><%= @canvasRequest["context"]["user"]["firstName"] %></span></td>
+    </tr>
+    <tr>
+      <td><b>Last Name: </b></td>
+      <td><span id='lastname'><%= @canvasRequest["context"]["user"]["lastName"] %></span></td>
+    </tr>
+    <tr>
+      <td><b>Username: </b></td>
+      <td><span id='username'><%= @canvasRequest["context"]["user"]["userName"] %></span></td>
+    </tr>
+    <tr>
+      <td><b>Email Address: </b></td>
+      <td><span id='email'><%= @canvasRequest["context"]["user"]["email"] %></span></td>
+    </tr>
+    <tr>
+      <td><b>Company: </b></td>
+      <td><span id='company'><%= @canvasRequest["context"]["organization"]["name"] %></span></td>
+    </tr>
+    <%  if (@canvasRequest["context"]["environment"]["record"]["Id"] != nil) then  %>
+      <tr>
+        <td colspan="2">You are currently viewing <b><%= @canvasRequest["context"]["environment"]["record"]["attributes"]["type"] %> <%= @canvasRequest["context"]["environment"]["record"]["Id"] %></b></td>
+      </tr>
+    <% end %>
+</table>

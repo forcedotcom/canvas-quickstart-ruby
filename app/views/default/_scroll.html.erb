@@ -24,14 +24,11 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABI
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 =end %>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Force.com Canvas Ruby Quick Start</title>
-  <%= csrf_meta_tags %>
-  <%= yield :head %>  
-</head>
-<body>
-<%= yield %>
-</body>
-</html>
+<p>
+Force.com Canvas can notify your canvas application when the user scrolls on the outer page.  The scroll event is fired with 
+the right information, so you know exactly where the user is. 
+</p> 
+<p>
+<a href="#" onclick="subscribe('canvas.scroll');">Subscribe</a> to the scroll event and see how the
+scroll event fires on the "Events" tab by scrolling the page.
+</p>
