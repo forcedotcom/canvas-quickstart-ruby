@@ -72,6 +72,7 @@ GEM
     multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    puma (3.9.1)
     rack (1.6.8)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -139,6 +140,7 @@ DEPENDENCIES
   bundler (= 1.15.1)
   coffee-rails (~> 4.2.2)
   jquery-rails
+  puma
   rails (= 4.2)
   rails_12factor
   sass-rails (~> 5.0.6)

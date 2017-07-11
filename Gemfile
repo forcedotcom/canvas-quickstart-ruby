@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '2.3.4'
-
 gem 'rails', '4.2'
 gem 'bundler', '1.15.1'
 gem 'activeresource'
 gem 'rails_12factor', group: :production
+gem 'puma'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,3 +16,5 @@ end
 
 gem 'jquery-rails'
 gem 'useragent'
+
+ruby '2.3.4'
