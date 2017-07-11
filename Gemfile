@@ -4,6 +4,7 @@ ruby '2.3.4'
 
 gem 'rails', '4.2'
 gem 'bundler', '1.15.1'
+gem 'activeresource'
 
 # Gems used only for assets and not required
 # in production environments by default.
