@@ -54,6 +54,6 @@ CanvasRuby::Application.configure do
 
   # Allow all domains to connect to us since we will be inside of an iframe
   config.action_dispatch.default_headers = {
-    'X-Frame-Options' => 'ALLOWALL'
+    'X-Frame-Options' => ''
   }
 end
