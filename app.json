@@ -1,0 +1,25 @@
+{
+  "name": "Canvas Quickstart Ruby Template",
+  "description": "A template for getting started with using Ruby in a Salesforce Canvas app",
+  "website": "http://developer.salesforce.com",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ruby_on_Rails_logo.svg",
+  "addons": ["heroku-postgresql"],
+  "env": {
+    "RAILS_ENV": "production",
+    "RACK_ENV": "production",
+    "RAILS_SERVE_STATIC_FILES": "true",
+    "CANVAS_CONSUMER_KEY": {
+        "description": "The consumer key for connecting to Canvas.",
+        "value": "Inital Consumer Key Value"
+    },
+    "CANVAS_CONSUMER_SECRET": {
+        "description": "The consumer secret that signs the Canvas contextual information.",
+        "value": "Inital Consumer Secret Value"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}

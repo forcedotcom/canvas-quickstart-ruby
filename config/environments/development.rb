@@ -51,4 +51,9 @@ CanvasRuby::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Allow all domains to connect to us since we will be inside of an iframe
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => ''
+  }
 end
