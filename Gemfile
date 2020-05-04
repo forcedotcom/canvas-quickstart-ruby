@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '6.0'
+gem 'rails', '6.0.2.2'
 gem 'bundler', '1.17.2'
 gem 'activeresource'
 gem 'rails_12factor', group: :production
