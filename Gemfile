@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '6.0.2.2'
 gem 'bundler', '1.17.2'
-gem 'activeresource'
+gem 'activeresource', '>= 5.1.1'
 gem 'rails_12factor', group: :production
 gem 'puma'
 
