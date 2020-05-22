@@ -4,7 +4,7 @@ gem 'rails', '6.0.2.2'
 gem 'bundler', '1.17.2'
 gem 'activeresource'
 gem 'rails_12factor', group: :production
-gem 'puma'
+gem 'puma', '>= 4.3.5'
 
 # Gems used only for assets and not required
 # in production environments by default.
